@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<!--
+  ╔══════════════════════════════════════════════════════════════════╗
+  ║  PORTAFOLIO · Francisco Javier Lozada Archundia                    ║
+  ║  Cómo personalizar (busca los comentarios "EDITAR"):               ║
+  ║   1) PROYECTOS  → pega la URL real de cada dashboard en href="#"   ║
+  ║   2) CAPTURAS   → reemplaza cada <div class="shot">…</div> por      ║
+  ║                    <img class="shot" src="img/archivo.png" alt=""> ║
+  ║   3) GALERÍA    → reemplaza los <div class="tile">…</div> por <img> ║
+  ║   4) CV / LINKS → revisa los href del hero y del footer            ║
+  ║  Sube este archivo como index.html a tu repo de GitHub Pages.      ║
+  ╚══════════════════════════════════════════════════════════════════╝
+-->
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Francisco J. Lozada Archundia — Economista · Analista de datos</title>
+<meta name="description" content="Economista (Colmex · UACh) especializado en sector externo, pronóstico macroeconómico y análisis de datos con R y Python.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Spline+Sans:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f2ede2;
+    --paper-2:#eae3d4;
+    --ink:#1b1915;
+    --ink-soft:#4d473d;
+    --ink-faint:#857c6c;
+    --rust:#a8472a;
+    --rust-deep:#8a3a22;
+    --line:#cdc4b0;
+    --shadow:18px 18px 0 rgba(27,25,21,.06);
+    --serif:"Fraunces",Georgia,serif;
+    --sans:"Spline Sans",system-ui,sans-serif;
+    --mono:"Spline Sans Mono",ui-monospace,monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  /* subtle paper grain */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.4;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  }
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;position:relative;z-index:2}
+  a{color:inherit}
+  ::selection{background:var(--rust);color:var(--paper)}
+
+  /* ── NAV ─────────────────────────────────────────────── */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(242,237,226,.82);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{font-family:var(--serif);font-weight:600;font-size:1.05rem;letter-spacing:.01em}
+  .brand b{color:var(--rust)}
+  .nav-links{display:flex;gap:26px;align-items:center}
+  .nav-links a{font-size:.82rem;text-decoration:none;color:var(--ink-soft);transition:color .2s}
+  .nav-links a:hover{color:var(--rust)}
+  .lang{
+    font-family:var(--mono);font-size:.72rem;border:1px solid var(--line);
+    background:transparent;color:var(--ink-soft);padding:5px 9px;border-radius:2px;
+    cursor:pointer;letter-spacing:.06em;transition:all .2s
+  }
+  .lang:hover{border-color:var(--rust);color:var(--rust)}
+  @media(max-width:720px){.nav-links a:not(.lang-wrap a){display:none}}
+
+  /* ── HERO ────────────────────────────────────────────── */
+  header{padding:78px 0 64px;position:relative}
+  .kicker{
+    font-family:var(--mono);font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--rust);margin-bottom:24px;display:flex;align-items:center;gap:12px
+  }
+  .kicker::before{content:"";width:34px;height:1px;background:var(--rust)}
+  h1.display{
+    font-family:var(--serif);font-weight:500;
+    font-size:clamp(3.1rem,9vw,6.6rem);line-height:.96;letter-spacing:-.02em;
+    margin-bottom:30px
+  }
+  h1.display em{font-style:italic;color:var(--rust)}
+  .lede{
+    font-size:clamp(1.05rem,2.2vw,1.32rem);max-width:600px;color:var(--ink-soft);
+    margin-bottom:34px
+  }
+  .who{
+    font-family:var(--mono);font-size:.82rem;color:var(--ink-faint);
+    border-left:2px solid var(--rust);padding-left:14px;margin-bottom:38px;line-height:1.5
+  }
+  .cta{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{
+    font-family:var(--sans);font-weight:500;font-size:.9rem;text-decoration:none;
+    padding:13px 22px;border-radius:2px;transition:all .22s;display:inline-flex;align-items:center;gap:8px
+  }
+  .btn-solid{background:var(--ink);color:var(--paper)}
+  .btn-solid:hover{background:var(--rust);transform:translateY(-2px)}
+  .btn-ghost{border:1px solid var(--ink);color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--rust);color:var(--rust);transform:translateY(-2px)}
+  .btn .arr{transition:transform .22s}
+  .btn:hover .arr{transform:translate(3px,-3px)}
+  /* decorative sparkline */
+  .spark{
+    position:absolute;right:-10px;top:90px;width:min(40vw,440px);opacity:.5;
+    pointer-events:none;z-index:1
+  }
+  .spark path{fill:none;stroke:var(--rust);stroke-width:1.4;
+    stroke-dasharray:1600;stroke-dashoffset:1600;animation:draw 2.6s 0.4s ease forwards}
+  .spark .dot{fill:var(--rust);opacity:0;animation:pop .4s 2.6s forwards}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  @keyframes pop{to{opacity:1}}
+  @media(max-width:860px){.spark{display:none}}
+
+  /* ── SECTION SHELL ───────────────────────────────────── */
+  section{padding:70px 0;border-top:1px solid var(--line)}
+  .sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:46px;flex-wrap:wrap}
+  .sec-num{font-family:var(--mono);font-size:.78rem;color:var(--rust);letter-spacing:.1em}
+  .sec-title{font-family:var(--serif);font-weight:500;font-size:clamp(1.7rem,4vw,2.5rem);letter-spacing:-.01em}
+  .sec-sub{font-size:.95rem;color:var(--ink-faint);margin-left:auto;max-width:340px}
+
+  /* ── ABOUT (diptych) ─────────────────────────────────── */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);background:var(--paper-2)}
+  .about-cell{padding:34px 32px}
+  .about-cell:first-child{border-right:1px solid var(--line)}
+  .about-cell h3{font-family:var(--serif);font-size:1.5rem;font-weight:600;margin-bottom:6px}
+  .about-cell .tag{font-family:var(--mono);font-size:.72rem;color:var(--rust);letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:14px}
+  .about-cell p{font-size:.96rem;color:var(--ink-soft)}
+  .about-prose{margin-top:30px;font-size:1.08rem;color:var(--ink-soft);max-width:760px}
+  .about-prose strong{color:var(--ink);font-weight:600}
+  @media(max-width:720px){
+    .about-grid{grid-template-columns:1fr}
+    .about-cell:first-child{border-right:none;border-bottom:1px solid var(--line)}
+  }
+
+  /* ── PROJECTS ────────────────────────────────────────── */
+  .proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:26px}
+  .card{
+    background:var(--paper-2);border:1px solid var(--line);border-radius:3px;overflow:hidden;
+    transition:transform .25s, box-shadow .25s;display:flex;flex-direction:column
+  }
+  .card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+  .shot{
+    aspect-ratio:16/10;width:100%;object-fit:cover;display:block;
+    background:
+      linear-gradient(135deg,rgba(168,71,42,.08),rgba(27,25,21,.04)),
+      repeating-linear-gradient(45deg,transparent 0 11px,rgba(27,25,21,.035) 11px 12px);
+    border-bottom:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--mono);font-size:.72rem;color:var(--ink-faint);text-align:center;padding:18px
+  }
+  .card-body{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1}
+  .card h3{font-family:var(--serif);font-size:1.28rem;font-weight:600;line-height:1.15;margin-bottom:9px}
+  .card p{font-size:.9rem;color:var(--ink-soft);margin-bottom:16px;flex:1}
+  .tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
+  .tag-chip{font-family:var(--mono);font-size:.68rem;color:var(--rust);border:1px solid var(--line);padding:3px 8px;border-radius:2px;letter-spacing:.04em}
+  .card-link{font-family:var(--sans);font-weight:500;font-size:.86rem;color:var(--ink);text-decoration:none;display:inline-flex;align-items:center;gap:7px;align-self:flex-start;border-bottom:1.5px solid var(--rust);padding-bottom:2px;transition:gap .2s}
+  .card-link:hover{gap:12px;color:var(--rust)}
+
+  /* ── GALLERY ─────────────────────────────────────────── */
+  .gal{columns:3;column-gap:18px}
+  @media(max-width:860px){.gal{columns:2}}
+  @media(max-width:520px){.gal{columns:1}}
+  .tile{
+    width:100%;margin-bottom:18px;border:1px solid var(--line);border-radius:3px;
+    background:
+      linear-gradient(160deg,rgba(168,71,42,.07),rgba(27,25,21,.03)),
+      repeating-linear-gradient(0deg,transparent 0 15px,rgba(27,25,21,.03) 15px 16px);
+    display:flex;align-items:center;justify-content:center;break-inside:avoid;cursor:zoom-in;
+    font-family:var(--mono);font-size:.72rem;color:var(--ink-faint);text-align:center;padding:24px;
+    transition:transform .2s, box-shadow .2s
+  }
+  .tile:hover{transform:scale(1.015);box-shadow:var(--shadow)}
+  .tile.t1{aspect-ratio:4/3}.tile.t2{aspect-ratio:1/1}.tile.t3{aspect-ratio:3/4}
+  img.tile{object-fit:cover}
+
+  /* lightbox */
+  .lb{position:fixed;inset:0;background:rgba(27,25,21,.92);display:none;align-items:center;justify-content:center;z-index:100;padding:32px;cursor:zoom-out}
+  .lb.open{display:flex}
+  .lb img{max-width:92%;max-height:92%;border:3px solid var(--paper)}
+
+  /* ── STACK ───────────────────────────────────────────── */
+  .stack-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .stack-col{background:var(--paper);padding:26px 24px}
+  .stack-col h4{font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--rust);margin-bottom:16px}
+  .stack-col ul{list-style:none}
+  .stack-col li{font-size:.95rem;color:var(--ink-soft);padding:6px 0;border-bottom:1px dotted var(--line)}
+  .stack-col li:last-child{border-bottom:none}
+
+  /* ── FOOTER ──────────────────────────────────────────── */
+  footer{background:var(--ink);color:var(--paper);padding:66px 0 40px;position:relative;z-index:2}
+  .foot-grid{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap}
+  .foot-big{font-family:var(--serif);font-weight:500;font-size:clamp(1.8rem,4.5vw,2.8rem);line-height:1.05;letter-spacing:-.01em}
+  .foot-big em{font-style:italic;color:#d98c6f}
+  .foot-links{display:flex;flex-direction:column;gap:10px}
+  .foot-links a{font-family:var(--mono);font-size:.85rem;color:#cfc6b6;text-decoration:none;transition:color .2s;display:inline-flex;align-items:center;gap:8px}
+  .foot-links a:hover{color:#fff}
+  .foot-base{margin-top:48px;padding-top:22px;border-top:1px solid rgba(242,237,226,.16);font-family:var(--mono);font-size:.72rem;color:#9a9081;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+  /* reveal */
+  .rv{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
+  .rv.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-in">
+    <div class="brand">FJ <b>Lozada</b></div>
+    <div class="nav-links">
+      <a href="#about" data-es="Perfil" data-en="About">Perfil</a>
+      <a href="#work" data-es="Proyectos" data-en="Projects">Proyectos</a>
+      <a href="#gallery" data-es="Visualización" data-en="Visuals">Visualización</a>
+      <a href="#contact" data-es="Contacto" data-en="Contact">Contacto</a>
+      <span class="lang-wrap"><button class="lang" id="langBtn">EN</button></span>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <svg class="spark" viewBox="0 0 440 200" aria-hidden="true">
+      <path d="M0,160 C40,150 60,120 90,118 C120,116 130,150 160,140 C190,130 200,70 235,72 C270,74 280,40 310,30 C340,20 360,55 390,40 C415,28 430,18 440,12"/>
+      <circle class="dot" cx="440" cy="12" r="4"/>
+    </svg>
+    <div class="kicker" data-es="Economista · Analista de datos · Docente" data-en="Economist · Data analyst · Lecturer">Economista · Analista de datos · Docente</div>
+    <h1 class="display" data-es="Del campo<br>al <em>modelo</em>." data-en="From the field<br>to the <em>model</em>.">Del campo<br>al <em>modelo</em>.</h1>
+    <p class="lede" data-es="Análisis del sector externo, pronóstico macroeconómico y datos que se vuelven decisiones — con rigor de posgrado y los pies en el México real." data-en="External-sector analysis, macroeconomic forecasting, and data turned into decisions — with graduate-level rigor and roots in Mexico's real economy.">Análisis del sector externo, pronóstico macroeconómico y datos que se vuelven decisiones — con rigor de posgrado y los pies en el México real.</p>
+    <div class="who" data-es="Francisco Javier Lozada Archundia&#10;M. en Economía, El Colegio de México · Lic., U. A. Chapingo&#10;Subdirector de Sector Externo · SHCP" data-en="Francisco Javier Lozada Archundia&#10;M.Sc. Economics, El Colegio de México · B.A., U. A. Chapingo&#10;Deputy Director, External Sector · Mexico's Ministry of Finance (SHCP)">Francisco Javier Lozada Archundia
+M. en Economía, El Colegio de México · Lic., U. A. Chapingo
+Subdirector de Sector Externo · SHCP</div>
+    <div class="cta">
+      <!-- EDITAR: confirma el nombre del archivo de tu CV en el repo -->
+      <a class="btn btn-solid" href="#work" data-es="Ver proyectos" data-en="See projects">Ver proyectos <span class="arr">↗</span></a>
+      <a class="btn btn-ghost" href="CV_Lozada_Analista_2026.pdf" data-es="Descargar CV" data-en="Download CV">Descargar CV <span class="arr">↗</span></a>
+      <a class="btn btn-ghost" href="https://linkedin.com/in/fjlozarch" target="_blank" rel="noopener">LinkedIn <span class="arr">↗</span></a>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-num">01</span>
+      <span class="sec-title" data-es="Dos escuelas, un perfil" data-en="Two schools, one profile">Dos escuelas, un perfil</span>
+      <span class="sec-sub" data-es="La combinación que define cómo trabajo." data-en="The combination that defines how I work.">La combinación que define cómo trabajo.</span>
+    </div>
+    <div class="about-grid rv">
+      <div class="about-cell">
+        <span class="tag">UACh · El campo</span>
+        <h3 data-es="Economía con botas" data-en="Boots-on economics">Economía con botas</h3>
+        <p data-es="Formación de base en economía agrícola y regional: entender cómo funcionan un distrito de riego, un ejido o una central de abasto — no desde la teoría, sino desde el terreno." data-en="A grounding in agricultural and regional economics: understanding how an irrigation district, an ejido, or a wholesale market actually works — not from theory, but from the ground.">Formación de base en economía agrícola y regional: entender cómo funcionan un distrito de riego, un ejido o una central de abasto — no desde la teoría, sino desde el terreno.</p>
+      </div>
+      <div class="about-cell">
+        <span class="tag">Colmex · El modelo</span>
+        <h3 data-es="Rigor analítico" data-en="Analytical rigor">Rigor analítico</h3>
+        <p data-es="El motor técnico: econometría aplicada, series de tiempo, teoría macroeconómica y la disciplina de uno de los centros de investigación más exigentes de la región." data-en="The technical engine: applied econometrics, time series, macroeconomic theory, and the discipline of one of the region's most demanding research institutions.">El motor técnico: econometría aplicada, series de tiempo, teoría macroeconómica y la disciplina de uno de los centros de investigación más exigentes de la región.</p>
+      </div>
+    </div>
+    <p class="about-prose rv" data-es="Hablo dos lenguajes que rara vez conviven: el del dato y el del territorio. En la práctica, eso significa diseñar una metodología de pronóstico por la mañana y explicar sus implicaciones de política a una audiencia no técnica por la tarde. Hoy lidero el análisis del sector externo y las proyecciones de cuenta corriente que alimentan documentos de política económica de alcance nacional." data-en="I speak two languages that rarely coexist: data and territory. In practice, that means designing a forecasting methodology in the morning and explaining its policy implications to a non-technical audience in the afternoon. Today I lead external-sector analysis and current-account projections that feed national economic-policy documents."><strong>Hablo dos lenguajes que rara vez conviven:</strong> el del dato y el del territorio. En la práctica, eso significa diseñar una metodología de pronóstico por la mañana y explicar sus implicaciones de política a una audiencia no técnica por la tarde. Hoy lidero el análisis del sector externo y las proyecciones de cuenta corriente que alimentan documentos de política económica de alcance nacional.</p>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-num">02</span>
+      <span class="sec-title" data-es="Proyectos &amp; dashboards" data-en="Projects &amp; dashboards">Proyectos &amp; dashboards</span>
+      <span class="sec-sub" data-es="Datos comerciales y macroeconómicos, hechos navegables." data-en="Trade and macro data, made navigable.">Datos comerciales y macroeconómicos, hechos navegables.</span>
+    </div>
+    <div class="proj-grid">
+
+      <!-- PROYECTO 1 -->
+      <article class="card rv">
+        <!-- CAPTURA: reemplaza el div por <img class="shot" src="img/census.png" alt="Dashboard comercio México-EE.UU."> -->
+        <div class="shot">[ captura del dashboard&#10;img/census.png ]</div>
+        <div class="card-body">
+          <h3 data-es="Comercio México–EE. UU." data-en="Mexico–U.S. trade">Comercio México–EE. UU.</h3>
+          <p data-es="Dashboard interactivo que clasifica las importaciones de EE. UU. desde México por categoría TMEC/arancelaria, confirmando a México como su principal proveedor." data-en="Interactive dashboard classifying U.S. imports from Mexico by USMCA/tariff category, confirming Mexico as the top supplier.">Dashboard interactivo que clasifica las importaciones de EE. UU. desde México por categoría TMEC/arancelaria, confirmando a México como su principal proveedor.</p>
+          <div class="tags"><span class="tag-chip">R</span><span class="tag-chip">Census API</span><span class="tag-chip">Plotly</span></div>
+          <!-- EDITAR: pega aquí la URL del dashboard -->
+          <a class="card-link" href="#" target="_blank" rel="noopener" data-es="Ver dashboard →" data-en="Open dashboard →">Ver dashboard →</a>
+        </div>
+      </article>
+
+      <!-- PROYECTO 2 -->
+      <article class="card rv">
+        <div class="shot">[ captura del dashboard&#10;img/sniim.png ]</div>
+        <div class="card-body">
+          <h3 data-es="Alerta de precios mayoristas" data-en="Wholesale-price alerts">Alerta de precios mayoristas</h3>
+          <p data-es="Sistema de alerta temprana de anomalías de precios (metodología IAPA-FAO + ponderación INEGI sobre datos SNIIM) para el monitoreo de inflación de la canasta básica." data-en="Early-warning system for price anomalies (FAO-IAPA methodology + INEGI weighting over SNIIM data) for monitoring basic-basket inflation.">Sistema de alerta temprana de anomalías de precios (metodología IAPA-FAO + ponderación INEGI sobre datos SNIIM) para el monitoreo de inflación de la canasta básica.</p>
+          <div class="tags"><span class="tag-chip">R</span><span class="tag-chip">IAPA</span><span class="tag-chip">SNIIM</span></div>
+          <a class="card-link" href="#" target="_blank" rel="noopener" data-es="Ver detalle →" data-en="See details →">Ver detalle →</a>
+        </div>
+      </article>
+
+      <!-- PROYECTO 3 -->
+      <article class="card rv">
+        <div class="shot">[ captura del dashboard&#10;img/comtrade.png ]</div>
+        <div class="card-body">
+          <h3 data-es="Concordancia HS → SCIAN" data-en="HS → SCIAN concordance">Concordancia HS → SCIAN</h3>
+          <p data-es="Pipeline de clasificación continua del comercio exterior con tablas de correspondencia ponderada que resuelven los cambios de versión del Sistema Armonizado en series largas." data-en="A continuous trade-classification pipeline with weighted correspondence tables that resolve Harmonized System version changes across long series.">Pipeline de clasificación continua del comercio exterior con tablas de correspondencia ponderada que resuelven los cambios de versión del Sistema Armonizado en series largas.</p>
+          <div class="tags"><span class="tag-chip">R</span><span class="tag-chip">UN Comtrade</span><span class="tag-chip">SDMX</span></div>
+          <a class="card-link" href="#" target="_blank" rel="noopener" data-es="Ver repositorio →" data-en="View repo →">Ver repositorio →</a>
+        </div>
+      </article>
+
+      <!-- Para añadir más proyectos, copia un bloque <article class="card rv">…</article> -->
+
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-num">03</span>
+      <span class="sec-title" data-es="Visualizaciones" data-en="Visualizations">Visualizaciones</span>
+      <span class="sec-sub" data-es="Salidas estáticas en ggplot2 — calidad editorial." data-en="Static ggplot2 outputs — editorial quality.">Salidas estáticas en ggplot2 — calidad editorial.</span>
+    </div>
+    <div class="gal">
+      <!-- GALERÍA: reemplaza cada <div class="tile…">…</div> por <img class="tile t1" src="img/grafico.png" alt="..."> -->
+      <div class="tile t1">[ fan chart — expectativas de inflación&#10;img/fanchart.png ]</div>
+      <div class="tile t3">[ ridgeline — encuesta Citibanamex&#10;img/ridgeline.png ]</div>
+      <div class="tile t2">[ balanza comercial sectorial&#10;img/balanza.png ]</div>
+      <div class="tile t2">[ densidad KDE — PIB esperado&#10;img/kde.png ]</div>
+      <div class="tile t1">[ anomalías SST / El Niño&#10;img/sst.png ]</div>
+      <div class="tile t3">[ matriz insumo-producto&#10;img/mip.png ]</div>
+    </div>
+  </div>
+</section>
+
+<section id="stack">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-num">04</span>
+      <span class="sec-title" data-es="Herramientas" data-en="Toolkit">Herramientas</span>
+      <span class="sec-sub" data-es="Lo que uso para ir del dato crudo a la decisión." data-en="What I use to go from raw data to decision.">Lo que uso para ir del dato crudo a la decisión.</span>
+    </div>
+    <div class="stack-grid rv">
+      <div class="stack-col">
+        <h4 data-es="Lenguajes" data-en="Languages">Lenguajes</h4>
+        <ul><li>R / tidyverse</li><li>Python</li><li>Stata</li><li>SQL · Macros Excel</li></ul>
+      </div>
+      <div class="stack-col">
+        <h4 data-es="Econometría" data-en="Econometrics">Econometría</h4>
+        <ul><li data-es="Series de tiempo" data-en="Time series">Series de tiempo</li><li>VARX · ARIMA</li><li data-es="Cointegración · ECM" data-en="Cointegration · ECM">Cointegración · ECM</li><li>Monte Carlo</li></ul>
+      </div>
+      <div class="stack-col">
+        <h4 data-es="Datos &amp; APIs" data-en="Data &amp; APIs">Datos &amp; APIs</h4>
+        <ul><li>UN Comtrade · WITS</li><li>U.S. Census</li><li>IMF SDMX 3.0</li><li>BIE-INEGI · Banxico</li></ul>
+      </div>
+      <div class="stack-col">
+        <h4 data-es="Visualización" data-en="Visualization">Visualización</h4>
+        <ul><li>ggplot2</li><li>Plotly · dashboards</li><li>RMarkdown</li><li>GitHub Pages</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-big" data-es="¿Hablamos de <em>datos</em>,<br>docencia o análisis?" data-en="Let's talk <em>data</em>,<br>teaching or analysis.">¿Hablamos de <em>datos</em>,<br>docencia o análisis?</div>
+      <div class="foot-links">
+        <!-- EDITAR: confirma estos enlaces -->
+        <a href="mailto:flozadaarchundia@gmail.com">✉ flozadaarchundia@gmail.com</a>
+        <a href="https://linkedin.com/in/fjlozarch" target="_blank" rel="noopener">in/ linkedin.com/in/fjlozarch</a>
+        <a href="https://github.com/" target="_blank" rel="noopener">⌨ github.com/tu-usuario</a>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© <span id="yr"></span> Francisco J. Lozada Archundia</span>
+      <span data-es="Hecho con R, café y GitHub Pages." data-en="Built with R, coffee &amp; GitHub Pages.">Hecho con R, café y GitHub Pages.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="lb" id="lb"><img id="lbImg" src="" alt=""></div>
+
+<script>
+  // año
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // ── toggle de idioma ──────────────────────────────
+  let lang = 'es';
+  const btn = document.getElementById('langBtn');
+  function applyLang(){
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-es]').forEach(el=>{
+      const val = lang==='es' ? el.getAttribute('data-es') : el.getAttribute('data-en');
+      if(val!==null) el.innerHTML = val;
+    });
+    btn.textContent = lang==='es' ? 'EN' : 'ES';
+  }
+  btn.addEventListener('click',()=>{lang = lang==='es'?'en':'es'; applyLang();});
+
+  // ── reveal on scroll ──────────────────────────────
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.14});
+  document.querySelectorAll('.rv').forEach((el,i)=>{
+    el.style.transitionDelay = (i%3)*0.08 + 's';
+    io.observe(el);
+  });
+
+  // ── lightbox para la galería ──────────────────────
+  const lb = document.getElementById('lb'), lbImg = document.getElementById('lbImg');
+  document.querySelectorAll('.gal img.tile').forEach(img=>{
+    img.addEventListener('click',()=>{ lbImg.src = img.src; lbImg.alt = img.alt; lb.classList.add('open'); });
+  });
+  lb.addEventListener('click',()=>lb.classList.remove('open'));
+</script>
+</body>
+</html>
