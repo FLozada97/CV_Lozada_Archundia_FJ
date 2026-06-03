@@ -11,6 +11,25 @@
   ║  Sube este archivo como index.html a tu repo de GitHub Pages.      ║
   ╚══════════════════════════════════════════════════════════════════╝
 -->
+<!--
+  ╔══════════════════════════════════════════════════════════════════╗
+  ║  PORTAFOLIO · Francisco Javier Lozada Archundia                    ║
+  ║                                                                    ║
+  ║  CÓMO FUNCIONAN LAS IMÁGENES (¡ya no editas el código!):           ║
+  ║   · Cada espacio ya apunta a un archivo en la carpeta img/         ║
+  ║   · Sube tu imagen a img/ con EXACTAMENTE ese nombre y aparece.    ║
+  ║   · Si el archivo no existe aún, se muestra un recuadro elegante.  ║
+  ║                                                                    ║
+  ║  Nombres de archivo que el sitio espera (carpeta img/):            ║
+  ║   Proyectos: census.png · sniim.png · comtrade.png                 ║
+  ║   Galería:   fanchart.png · ridgeline.png · balanza.png            ║
+  ║              kde.png · sst.png · mip.png                           ║
+  ║                                                                    ║
+  ║  OTROS AJUSTES (busca "EDITAR"):                                   ║
+  ║   · URLs de los dashboards (href="#")                              ║
+  ║   · Archivo del CV en PDF · usuario de GitHub                      ║
+  ╚══════════════════════════════════════════════════════════════════╝
+-->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -45,7 +64,6 @@
     -webkit-font-smoothing:antialiased;
     overflow-x:hidden;
   }
-  /* subtle paper grain */
   body::before{
     content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.4;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
@@ -106,7 +124,6 @@
   .btn-ghost:hover{border-color:var(--rust);color:var(--rust);transform:translateY(-2px)}
   .btn .arr{transition:transform .22s}
   .btn:hover .arr{transform:translate(3px,-3px)}
-  /* decorative sparkline */
   .spark{
     position:absolute;right:-10px;top:90px;width:min(40vw,440px);opacity:.5;
     pointer-events:none;z-index:1
@@ -146,15 +163,17 @@
     transition:transform .25s, box-shadow .25s;display:flex;flex-direction:column
   }
   .card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+  /* contenedor de captura: mantiene proporción y muestra placeholder debajo de la imagen */
   .shot{
-    aspect-ratio:16/10;width:100%;object-fit:cover;display:block;
+    position:relative;aspect-ratio:16/10;width:100%;
+    border-bottom:1px solid var(--line);overflow:hidden;
     background:
       linear-gradient(135deg,rgba(168,71,42,.08),rgba(27,25,21,.04)),
       repeating-linear-gradient(45deg,transparent 0 11px,rgba(27,25,21,.035) 11px 12px);
-    border-bottom:1px solid var(--line);
-    display:flex;align-items:center;justify-content:center;
-    font-family:var(--mono);font-size:.72rem;color:var(--ink-faint);text-align:center;padding:18px
+    display:flex;align-items:center;justify-content:center
   }
+  .shot .ph{font-family:var(--mono);font-size:.72rem;color:var(--ink-faint);text-align:center;padding:18px;white-space:pre-line}
+  .shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;background:var(--paper-2)}
   .card-body{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1}
   .card h3{font-family:var(--serif);font-size:1.28rem;font-weight:600;line-height:1.15;margin-bottom:9px}
   .card p{font-size:.9rem;color:var(--ink-soft);margin-bottom:16px;flex:1}
@@ -168,17 +187,18 @@
   @media(max-width:860px){.gal{columns:2}}
   @media(max-width:520px){.gal{columns:1}}
   .tile{
-    width:100%;margin-bottom:18px;border:1px solid var(--line);border-radius:3px;
+    position:relative;width:100%;margin-bottom:18px;border:1px solid var(--line);border-radius:3px;
+    overflow:hidden;break-inside:avoid;
     background:
       linear-gradient(160deg,rgba(168,71,42,.07),rgba(27,25,21,.03)),
       repeating-linear-gradient(0deg,transparent 0 15px,rgba(27,25,21,.03) 15px 16px);
-    display:flex;align-items:center;justify-content:center;break-inside:avoid;cursor:zoom-in;
-    font-family:var(--mono);font-size:.72rem;color:var(--ink-faint);text-align:center;padding:24px;
+    display:flex;align-items:center;justify-content:center;
     transition:transform .2s, box-shadow .2s
   }
   .tile:hover{transform:scale(1.015);box-shadow:var(--shadow)}
+  .tile .ph{font-family:var(--mono);font-size:.72rem;color:var(--ink-faint);text-align:center;padding:24px;white-space:pre-line}
+  .tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;background:var(--paper-2);cursor:zoom-in}
   .tile.t1{aspect-ratio:4/3}.tile.t2{aspect-ratio:1/1}.tile.t3{aspect-ratio:3/4}
-  img.tile{object-fit:cover}
 
   /* lightbox */
   .lb{position:fixed;inset:0;background:rgba(27,25,21,.92);display:none;align-items:center;justify-content:center;z-index:100;padding:32px;cursor:zoom-out}
@@ -236,7 +256,7 @@
 M. en Economía, El Colegio de México · Lic., U. A. Chapingo
 Subdirector de Sector Externo · SHCP</div>
     <div class="cta">
-      <!-- EDITAR: confirma el nombre del archivo de tu CV en el repo -->
+      <!-- EDITAR: confirma el nombre de tu archivo de CV en PDF (súbelo a la raíz del repo) -->
       <a class="btn btn-solid" href="#work" data-es="Ver proyectos" data-en="See projects">Ver proyectos <span class="arr">↗</span></a>
       <a class="btn btn-ghost" href="CV_Lozada_Analista_2026.pdf" data-es="Descargar CV" data-en="Download CV">Descargar CV <span class="arr">↗</span></a>
       <a class="btn btn-ghost" href="https://linkedin.com/in/fjlozarch" target="_blank" rel="noopener">LinkedIn <span class="arr">↗</span></a>
@@ -276,10 +296,12 @@ Subdirector de Sector Externo · SHCP</div>
     </div>
     <div class="proj-grid">
 
-      <!-- PROYECTO 1 -->
+      <!-- PROYECTO 1 — imagen: img/census.png -->
       <article class="card rv">
-        <!-- CAPTURA: reemplaza el div por <img class="shot" src="img/census.png" alt="Dashboard comercio México-EE.UU."> -->
-        <div class="shot">[ captura del dashboard&#10;img/census.png ]</div>
+        <div class="shot">
+          <span class="ph">[ captura del dashboard&#10;img/census.png ]</span>
+          <img src="img/census.png" alt="Dashboard comercio México–EE. UU." loading="lazy" onerror="this.remove()">
+        </div>
         <div class="card-body">
           <h3 data-es="Comercio México–EE. UU." data-en="Mexico–U.S. trade">Comercio México–EE. UU.</h3>
           <p data-es="Dashboard interactivo que clasifica las importaciones de EE. UU. desde México por categoría TMEC/arancelaria, confirmando a México como su principal proveedor." data-en="Interactive dashboard classifying U.S. imports from Mexico by USMCA/tariff category, confirming Mexico as the top supplier.">Dashboard interactivo que clasifica las importaciones de EE. UU. desde México por categoría TMEC/arancelaria, confirmando a México como su principal proveedor.</p>
@@ -289,9 +311,12 @@ Subdirector de Sector Externo · SHCP</div>
         </div>
       </article>
 
-      <!-- PROYECTO 2 -->
+      <!-- PROYECTO 2 — imagen: img/sniim.png -->
       <article class="card rv">
-        <div class="shot">[ captura del dashboard&#10;img/sniim.png ]</div>
+        <div class="shot">
+          <span class="ph">[ captura del dashboard&#10;img/sniim.png ]</span>
+          <img src="img/sniim.png" alt="Sistema de alerta de precios mayoristas" loading="lazy" onerror="this.remove()">
+        </div>
         <div class="card-body">
           <h3 data-es="Alerta de precios mayoristas" data-en="Wholesale-price alerts">Alerta de precios mayoristas</h3>
           <p data-es="Sistema de alerta temprana de anomalías de precios (metodología IAPA-FAO + ponderación INEGI sobre datos SNIIM) para el monitoreo de inflación de la canasta básica." data-en="Early-warning system for price anomalies (FAO-IAPA methodology + INEGI weighting over SNIIM data) for monitoring basic-basket inflation.">Sistema de alerta temprana de anomalías de precios (metodología IAPA-FAO + ponderación INEGI sobre datos SNIIM) para el monitoreo de inflación de la canasta básica.</p>
@@ -300,9 +325,12 @@ Subdirector de Sector Externo · SHCP</div>
         </div>
       </article>
 
-      <!-- PROYECTO 3 -->
+      <!-- PROYECTO 3 — imagen: img/comtrade.png -->
       <article class="card rv">
-        <div class="shot">[ captura del dashboard&#10;img/comtrade.png ]</div>
+        <div class="shot">
+          <span class="ph">[ captura del dashboard&#10;img/comtrade.png ]</span>
+          <img src="img/comtrade.png" alt="Pipeline de concordancia HS a SCIAN" loading="lazy" onerror="this.remove()">
+        </div>
         <div class="card-body">
           <h3 data-es="Concordancia HS → SCIAN" data-en="HS → SCIAN concordance">Concordancia HS → SCIAN</h3>
           <p data-es="Pipeline de clasificación continua del comercio exterior con tablas de correspondencia ponderada que resuelven los cambios de versión del Sistema Armonizado en series largas." data-en="A continuous trade-classification pipeline with weighted correspondence tables that resolve Harmonized System version changes across long series.">Pipeline de clasificación continua del comercio exterior con tablas de correspondencia ponderada que resuelven los cambios de versión del Sistema Armonizado en series largas.</p>
@@ -311,7 +339,7 @@ Subdirector de Sector Externo · SHCP</div>
         </div>
       </article>
 
-      <!-- Para añadir más proyectos, copia un bloque <article class="card rv">…</article> -->
+      <!-- Para añadir más proyectos, copia un bloque <article class="card rv">…</article> y usa una nueva imagen img/nombre.png -->
 
     </div>
   </div>
@@ -325,13 +353,32 @@ Subdirector de Sector Externo · SHCP</div>
       <span class="sec-sub" data-es="Salidas estáticas en ggplot2 — calidad editorial." data-en="Static ggplot2 outputs — editorial quality.">Salidas estáticas en ggplot2 — calidad editorial.</span>
     </div>
     <div class="gal">
-      <!-- GALERÍA: reemplaza cada <div class="tile…">…</div> por <img class="tile t1" src="img/grafico.png" alt="..."> -->
-      <div class="tile t1">[ fan chart — expectativas de inflación&#10;img/fanchart.png ]</div>
-      <div class="tile t3">[ ridgeline — encuesta Citibanamex&#10;img/ridgeline.png ]</div>
-      <div class="tile t2">[ balanza comercial sectorial&#10;img/balanza.png ]</div>
-      <div class="tile t2">[ densidad KDE — PIB esperado&#10;img/kde.png ]</div>
-      <div class="tile t1">[ anomalías SST / El Niño&#10;img/sst.png ]</div>
-      <div class="tile t3">[ matriz insumo-producto&#10;img/mip.png ]</div>
+
+      <div class="tile t1">
+        <span class="ph">[ fan chart — expectativas de inflación&#10;img/fanchart.png ]</span>
+        <img src="img/fanchart.png" alt="Fan chart — expectativas de inflación" loading="lazy" onerror="this.remove()">
+      </div>
+      <div class="tile t3">
+        <span class="ph">[ ridgeline — encuesta Citibanamex&#10;img/ridgeline.png ]</span>
+        <img src="img/ridgeline.png" alt="Ridgeline — encuesta Citibanamex" loading="lazy" onerror="this.remove()">
+      </div>
+      <div class="tile t2">
+        <span class="ph">[ balanza comercial sectorial&#10;img/balanza.png ]</span>
+        <img src="img/balanza.png" alt="Balanza comercial sectorial" loading="lazy" onerror="this.remove()">
+      </div>
+      <div class="tile t2">
+        <span class="ph">[ densidad KDE — PIB esperado&#10;img/kde.png ]</span>
+        <img src="img/kde.png" alt="Densidad KDE — PIB esperado" loading="lazy" onerror="this.remove()">
+      </div>
+      <div class="tile t1">
+        <span class="ph">[ anomalías SST / El Niño&#10;img/sst.png ]</span>
+        <img src="img/sst.png" alt="Anomalías SST / El Niño" loading="lazy" onerror="this.remove()">
+      </div>
+      <div class="tile t3">
+        <span class="ph">[ matriz insumo-producto&#10;img/mip.png ]</span>
+        <img src="img/mip.png" alt="Matriz insumo-producto" loading="lazy" onerror="this.remove()">
+      </div>
+
     </div>
   </div>
 </section>
@@ -369,10 +416,10 @@ Subdirector de Sector Externo · SHCP</div>
     <div class="foot-grid">
       <div class="foot-big" data-es="¿Hablamos de <em>datos</em>,<br>docencia o análisis?" data-en="Let's talk <em>data</em>,<br>teaching or analysis.">¿Hablamos de <em>datos</em>,<br>docencia o análisis?</div>
       <div class="foot-links">
-        <!-- EDITAR: confirma estos enlaces -->
         <a href="mailto:flozadaarchundia@gmail.com">✉ flozadaarchundia@gmail.com</a>
         <a href="https://linkedin.com/in/fjlozarch" target="_blank" rel="noopener">in/ linkedin.com/in/fjlozarch</a>
-        <a href="https://github.com/" target="_blank" rel="noopener">⌨ github.com/tu-usuario</a>
+        <!-- EDITAR: confirma tu usuario real de GitHub -->
+        <a href="https://github.com/flozada97" target="_blank" rel="noopener">⌨ github.com/flozada97</a>
       </div>
     </div>
     <div class="foot-base">
@@ -385,7 +432,6 @@ Subdirector de Sector Externo · SHCP</div>
 <div class="lb" id="lb"><img id="lbImg" src="" alt=""></div>
 
 <script>
-  // año
   document.getElementById('yr').textContent = new Date().getFullYear();
 
   // ── toggle de idioma ──────────────────────────────
@@ -410,9 +456,9 @@ Subdirector de Sector Externo · SHCP</div>
     io.observe(el);
   });
 
-  // ── lightbox para la galería ──────────────────────
+  // ── lightbox: solo imágenes que cargaron en la galería ──
   const lb = document.getElementById('lb'), lbImg = document.getElementById('lbImg');
-  document.querySelectorAll('.gal img.tile').forEach(img=>{
+  document.querySelectorAll('.gal .tile img').forEach(img=>{
     img.addEventListener('click',()=>{ lbImg.src = img.src; lbImg.alt = img.alt; lb.classList.add('open'); });
   });
   lb.addEventListener('click',()=>lb.classList.remove('open'));
